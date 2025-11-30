@@ -1,24 +1,26 @@
-import asyncio
-import time
+import asyncio, time
 
 async def fetch_data(param):
-    print(f"Working with param {param}...")
-    await asyncio.sleep(2)
-    print(f"Finished param {param}.")
-    return f"Result for {param}"
+    print(f"Nešto radim s {param}...")
+    await asyncio.sleep(param)
+    print(f"Dovršio sam s {param}.")
+    return f"Rezultat za {param}"
 
 async def main():
-    task1 = asyncio.create_task(fetch_data(1))
-    task2 = asyncio.create_task(fetch_data(2))
+    task1 = asyncio.create_task(fetch_data(1)) 
+    task2 = asyncio.create_task(fetch_data(2))  
 
-    result1 = await task1
-    print("Task 1 is done.")
+    result1 = await task2
+
+    print("Fetch 1 uspješno završen.")
+
+    await asyncio.sleep(0) 
 
     return [result1]
 
 t1 = time.perf_counter()
-result = asyncio.run(main())
+results = asyncio.run(main())
 t2 = time.perf_counter()
 
-print("Result:", result)
-print(f"Execution time: {t2 - t1:.2f} seconds")
+print(results)
+print(f"Vrijeme izvođenja {t2 - t1:.2f} sekunde")
